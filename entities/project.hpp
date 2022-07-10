@@ -12,16 +12,13 @@
 #include"task.hpp"
 #include"user.hpp"
 
-
-
 namespace entities
 {
-
-class Project::entities::entity
+class Project: public entities::Entity
 {
 public:
   Project() = default;
-  Project(std::string name) : m_name;
+  Project(std::string name) : m_name(name){};
   Project(const Project&) = default;
   Project(Project&&) = default;
   Project& operator=(const Project&) = default;
@@ -36,31 +33,41 @@ public:
   {
     return m_name;
   }
-  void set_manager(const User& manager)
+  void set_manager(const entities::User& manager)
   {
     m_manager = manager;
   }
-  User get_manager() const
+  entities::User get_manager() const
   {
     return m_manager;
   }
-  void set_tasks(const std::vector<Task>& task)
+  void add_task(const entities::Task& task)
   {
-    m_tasks = task;
+    m_tasks.push_back(task);
+  }
+  std::vector<entities::Task> get_tasks() const
+  {
+    return m_tasks;
   }
   std::string to_string(const std::string& delimiter) const override
   {
-  }
+    std::string result;
+    result += get_name();
+    result += delimiter;
+    result += get_manager().to_string(delimiter);
+    result += delimiter;
 
-  void get_email() const
-  {
-    return m_email;
+    for(int i = 0; i < get_tasks().size(); ++i)
+    {
+      result += get_tasks()[i].to_string(delimiter);
+      result += delimiter;
+    }
+    return result;
   }
 private:
   std::string m_name;
-  User m_manager;
-  std::vector<Task> m_tasks;
+  entities::User m_manager;
+  std::vector<entities::Task> m_tasks;
 };
-
-}
-
+} // entities
+#endif //PROJECT_H
