@@ -20,21 +20,21 @@ public:
 
   static void save(const entities::Entity* e, const std::string delimiter)
   {
-    //f.open("entities.txt");
-    //if(f.is_open())
-    //{
-      //f << e->to_string(delimiter);
-      std::cout << e->to_string(delimiter);
-      std::cout << "save\n";
-    //}
-    //else
-    //{
-    //  std::cout << "Error\n";
-    //}
-    //f.close();
+    std::ofstream f;
+    f.open("entities.txt", std::ios::app);
+    if(f.is_open())
+    {
+      f << e->to_string(delimiter);
+      std::cout << "Saved\n";
+    }
+    else
+    {
+      std::cout << "Error\n";
+    }
+    f.close();
   }
 private:
-  static std::fstream f;
+  //static std::ofstream f;
 };
 } //core
 
