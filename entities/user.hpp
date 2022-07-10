@@ -1,5 +1,5 @@
 /*
- * user.hpp define User entity
+ * @file user.hpp define User entity
  */
 #ifndef USER_H
 #define USER_H
@@ -66,6 +66,15 @@ public:
     if(m_title != rhs.m_title) return false;
     return true;
   }
+  bool operator!=(const User& rhs) const
+  {
+    if(m_name == rhs.m_name && m_email == rhs.m_email &&
+       m_title == rhs.m_title && m_password == rhs.m_password)
+    {
+      return false;
+    }
+    return true;
+  }
   virtual std::string to_string(const std::string& delimiter) const
   {
     std::string result;
@@ -85,4 +94,4 @@ private:
   std::string m_title;
 };
 } // entities
-#endif //USER.H
+#endif //USER_H

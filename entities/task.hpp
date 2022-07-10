@@ -1,5 +1,5 @@
 /*
- * task.hpp define Task entity
+ * @file task.hpp define Task entity
  */
 #ifndef TASK_H
 #define TASK_H
@@ -20,7 +20,6 @@ public:
   Task(Task&&) = default;
   Task& operator=(const Task&) = default;
   Task& operator=(Task&&) = default;
-  //TODO: copy, move, assignment
 public:
   bool operator==(const Task rhs) const{
     if(m_name != rhs.m_name)
@@ -31,10 +30,10 @@ public:
     {
       return false;
     }
-    //if(m_assignee != rhs.m_assignee)
-    //{
-    //  return false;
-    //}
+    if(m_assignee != rhs.m_assignee)
+    {
+      return false;
+    }
     return true;
   }
 public:
