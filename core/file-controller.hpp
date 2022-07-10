@@ -18,12 +18,13 @@ public:
   FileController() = delete;
   ~FileController() = delete;
 
-  static void save(const entities::Entity& e, const std::string delimiter)
+  static void save(const entities::Entity* e, const std::string delimiter)
   {
     //f.open("entities.txt");
     //if(f.is_open())
     //{
       //f << e->to_string(delimiter);
+      std::cout << e->to_string(delimiter);
       std::cout << "save\n";
     //}
     //else

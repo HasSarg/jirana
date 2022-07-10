@@ -32,7 +32,7 @@ int main()
   project.add_task(task);
   std::cout << project.to_string(" | ") << std::endl;
 
-  //entities::Entity* e = &project;
-  core::FileController::save(project, " | ");
+  entities::Entity* e = &project;
+  core::FileController::save(e, " | ");
   return 0;
 }
