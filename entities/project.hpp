@@ -22,8 +22,18 @@ public:
   Project(const Project&) = default;
   Project(Project&&) = default;
   Project& operator=(const Project&) = default;
-  Project& operator=(Project&&) = default;
-  ~Project() = default;
+  //Project& operator=(Project&&) = default;
+  Project& operator=(Project&& project)
+  {
+    if(this != &project)
+    {
+       m_name = project.get_name();
+       m_manager = project.get_manager();
+       m_tasks = project.get_tasks();
+    }
+    return *this;
+  }
+  virtual ~Project() = default;
 public:
   void set_name(const std::string& name)
   {
@@ -56,7 +66,6 @@ public:
     result += delimiter;
     result += get_manager().to_string(delimiter);
     result += delimiter;
-
     for(int i = 0; i < get_tasks().size(); ++i)
     {
       result += get_tasks()[i].to_string(delimiter);

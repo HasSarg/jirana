@@ -8,6 +8,8 @@ namespace entities
 class Entity
 {
   public:
+   virtual ~Entity() = default;
+  public:
     virtual std::string to_string(const std::string& delimiter) const = 0;
 };
 } //entities

@@ -13,18 +13,41 @@ class User: public entities::Entity
 {
   public:
   User() = default;
-  ~User() = default;
-  User(const User&) = default;
+  //User(const User&) = default;
+  User(const User& user)
+  {
+    if(this == &user) return;
+    m_name = user.get_name();
+    m_email = user.get_email();
+    m_password = user.get_password();
+    m_title = user.get_title();
+  }
   User(User&&) = default;
   //User& operator=(const User&) = default;
   User& operator=(const User& other)
   {
-    m_name = other.get_name();
-    m_email = other.get_email();
-    m_password = other.get_password();
-    m_title = other.get_title();
+    if(this != &other)
+    {
+      m_name = other.get_name();
+      m_email = other.get_email();
+      m_password = other.get_password();
+      m_title = other.get_title();
+    }
+    return *this;
   }
-  User& operator=(User&&) = default;
+  //User& operator=(User&&) = default;
+  User& operator=(User&& other)
+  {
+    if(this != &other)
+    {
+      m_name = other.get_name();
+      m_email = other.get_email();
+      m_password = other.get_password();
+      m_title = other.get_title();
+    }
+    return *this;
+  }
+  virtual ~User() = default;
 public:
   void set_name(const std::string& name)
   {
@@ -75,7 +98,7 @@ public:
     }
     return true;
   }
-  virtual std::string to_string(const std::string& delimiter) const
+  virtual std::string to_string(const std::string& delimiter) const override
   {
     std::string result;
     result += m_name;

@@ -25,6 +25,7 @@ public:
     if(f.is_open())
     {
       f << e->to_string(delimiter);
+      f << "\n";
       std::cout << "Saved\n";
     }
     else

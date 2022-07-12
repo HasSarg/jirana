@@ -14,12 +14,28 @@ class Task : public entities::Entity
 {
 public:
   Task() = default;
-  ~Task() = default;
   Task(const std::string& name) : m_name{name}{};
-  Task(const Task&) = default;
+  //Task(const Task&) = default;
+  Task(const Task& task)
+  {
+    if(this == &task) return;
+    m_name = task.m_name;
+    m_deadline = task.m_deadline;
+    m_status = task.m_status;
+    m_assignee = task.m_assignee;//??????
+  }
   Task(Task&&) = default;
-  Task& operator=(const Task&) = default;
+  //Task& operator=(const Task&) = default;
+  Task& operator=(const Task& task)
+  {
+    if(this == &task) return *this;
+    m_name = task.m_name;
+    m_deadline = task.m_deadline;
+    m_assignee = task.m_assignee;
+    m_status = task.m_status;
+  }
   Task& operator=(Task&&) = default;
+  virtual ~Task() = default;
 public:
   bool operator==(const Task rhs) const{
     if(m_name != rhs.m_name)
@@ -31,6 +47,21 @@ public:
       return false;
     }
     if(m_assignee != rhs.m_assignee)
+    {
+      return false;
+    }
+    return true;
+  }
+  bool operator!=(const Task rhs) const{
+    if(m_name == rhs.m_name)
+    {
+      return false;
+    }
+    if(m_deadline == rhs.m_deadline)
+    {
+      return false;
+    }
+    if(m_assignee == rhs.m_assignee)
     {
       return false;
     }
