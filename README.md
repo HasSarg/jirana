@@ -1,17 +1,18 @@
 # jirana
 
 
-|__________\_dirs break down __|
-|main.cpp  |                   |
-|README.md |                   |
-|Makefile  |                   |
-|          |                   |
-|core      |file-controller.hpp|
-|          |                   |
-|entities  |entity.hpp         |
-|          |user.hpp           |
-|          |task.hpp           |
-|          |project.hpp        |
+|           | dirs break down     |
+|___________|_____________________|
+| main.cpp  |                     |
+| README.md |                     |
+| Makefile  |                     |
+|           |                     |
+| core      | file-controller.hpp |
+|           |                     |
+| entities  | entity.hpp          |
+|           | user.hpp            |
+|           | task.hpp            |
+|           | project.hpp         |
 
 
 ### USAGE
