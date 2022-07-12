@@ -1,18 +1,23 @@
 # jirana
 
 
-|           | dirs break down     |
-|___________|_____________________|
-| main.cpp  |                     |
-| README.md |                     |
-| Makefile  |                     |
-|           |                     |
-| core      | file-controller.hpp |
-|           |                     |
-| entities  | entity.hpp          |
-|           | user.hpp            |
-|           | task.hpp            |
-|           | project.hpp         |
+
+| Files      |  Description                   |
+|------------|--------------------------------|
+| main.cpp   |the main source of the project  |
+|            |                                |
+| core/      | file-controller                |
+|            |                                |
+| entities/  | entity.hpp                     |
+|            |                                |
+|            | user.hpp                       |
+|            |                                |
+|            | task.hpp                       |
+|            |                                |
+|            | project.hpp                    |
+|            |                                |
+| Makefile   |make, run & clean commands      |
+
 
 
 ### USAGE
